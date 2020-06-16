@@ -190,16 +190,16 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
                 /**
                  * navigates to the About Us activity
                  */
-               R.id.navigation_profile ->{
+                R.id.navigation_profile ->{
                     startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
                     finish()
                     true
                 }
-//                R.id.navigation_wishlist ->{
-//                    startActivity(Intent(this@MainActivity, WishlistActivity::class.java))
-//                    finish()
-//                    true
-//                }
+                R.id.navigation_wishlist ->{
+                    startActivity(Intent(this@MainActivity, WishlistActivity::class.java))
+                    finish()
+                    true
+                }
 //                R.id.navigation_map ->{
 //                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
 //                    finish()
