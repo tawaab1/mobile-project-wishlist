@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
@@ -155,6 +156,19 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
             intent.putExtra("album", album)
             startActivity(intent)
         }
+    }
+
+    /*
+    exit alert dialog on back pressed, when user presses back button
+    gives user option to to exit "yes" or stay "no"
+*/
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setMessage("Are You Sure You want To Exit")
+            .setCancelable(false)
+            .setPositiveButton("Yes", { dialog, id-> super@MainActivity.onBackPressed() })
+            .setNegativeButton("No", null)
+            .show()
     }
 }
 
