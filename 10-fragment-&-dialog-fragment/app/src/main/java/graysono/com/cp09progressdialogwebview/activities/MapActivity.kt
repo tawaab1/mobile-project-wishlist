@@ -5,17 +5,16 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import graysono.com.cp09progressdialogwebview.R
+import kotlinx.android.synthetic.main.activity_map.*
 import kotlinx.android.synthetic.main.activity_wishlist.*
-import kotlinx.android.synthetic.main.content_main.*
 
-class WishlistActivity : BaseActivity() {
-
+class MapActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wishlist)
+        setContentView(R.layout.activity_map)
 
-        bnv2.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
-        bnv2.menu.getItem(1).isChecked = true
+        bnv4.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
+        bnv4.menu.getItem(1).isChecked = true
     }
 
 
@@ -29,7 +28,7 @@ class WishlistActivity : BaseActivity() {
                  * navigates to the MainActivity
                  */
                 R.id.navigation_home -> {
-                    startActivity(Intent(this@WishlistActivity, MainActivity::class.java))
+                    startActivity(Intent(this@MapActivity, MainActivity::class.java))
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
@@ -38,19 +37,19 @@ class WishlistActivity : BaseActivity() {
                  * navigates to the About Us activity
                  */
                 R.id.navigation_profile ->{
-                    startActivity(Intent(this@WishlistActivity, ProfileActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    startActivity(Intent(this@MapActivity, ProfileActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
                 }
                 R.id.navigation_wishlist -> {
-                    startActivity(Intent(this@WishlistActivity, WishlistActivity::class.java))
+                    startActivity(Intent(this@MapActivity, WishlistActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
                 }
                 R.id.navigation_map ->{
-                    startActivity(Intent(this@WishlistActivity, MapActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    startActivity(Intent(this@MapActivity, MapActivity::class.java))
                     finish()
                     true
                 }
