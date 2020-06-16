@@ -1,30 +1,30 @@
 <resources>
     <string name="app_name">09 Alert Builder Dialog</string>
-    <string name="TAG">MainActivity</string>
-    <string name="on_data_available">onDataAvailable - %1$s</string>
-    <string name="on_error">onError - %1$s</string>
-    <string name="base_url">http://ws.audioscrobbler.com/2.0/</string>
-    <string name="method">artist.gettopalbums</string>
-    <string name="api_key">58384a2141a4b9737eacb9d0989b8a8c</string>
-    <string name="format">json</string>
+    <string name="TAG" translatable="false">MainActivity</string>
+    <string name="on_data_available" translatable="false">onDataAvailable - %1$s</string>
+    <string name="on_error" translatable="false">onError - %1$s</string>
+    <string name="base_url" translatable="false">http://ws.audioscrobbler.com/2.0/</string>
+    <string name="method" translatable="false">artist.gettopalbums</string>
+    <string name="api_key" translatable="false">58384a2141a4b9737eacb9d0989b8a8c</string>
+    <string name="format" translatable="false">json</string>
     <string name="album_name">Album Name: %1$s</string>
     <string name="artist_name">Artist Name: %1$s</string>
     <string name="play_count">Play Count: %1$s</string>
     <string name="action_main">Main</string>
     <string name="action_search">Search</string>
     <string name="please_wait">Please Wait&#8230;</string>
-    <string name="album_query">album_query</string>
+    <string name="album_query" translatable="false">album_query</string>
     <string name="search_label">Search Artist</string>
     <string name="search_hint">Search Artist</string>
     <string name="action_about_us">About Us</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings" translatable="false">Settings</string>
     <string name="builder_about_us_title">About Us</string>
     <string name="builder_about_us_message">Last.fm is a music service that learns what you love. Create your own profile, track what you listen to (we call this scrobbling) and get cool stuff like your own music charts, new music recommendations, and a big ol\' community of other music lovers.</string>
     <string name="builder_about_us_positive">OK</string>
-    <string name="last_fm">Last.fm</string>
+    <string name="last_fm" translatable="false">Last.fm</string>
     <string name="action_rate_us">Rate Us</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="action_profile">Profile</string>
-    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_settings" translatable="false">SettingsActivity</string>
+    <string name="action_profile" translatable="false">Profile</string>
+    <string name="title_activity_profile" translatable="false">ProfileActivity</string>
     <string name="first_name">First Name</string>
 </resources>

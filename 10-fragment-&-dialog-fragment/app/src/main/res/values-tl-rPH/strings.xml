@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">09 Alert Builder Dialog</string>
+    <string name="action_main">Pangunahin</string>
+    <string name="action_search">Hanapin</string>
+    <string name="search_label">Hanapin ang mang-aawit</string>
+    <string name="search_hint">mang-aawit</string>
+    <string name="action_about_us">Tungkol sa amin</string>
+    <string name="builder_about_us_title">Tungkol sa amin</string>
+    <string name="builder_about_us_message">Ang Last.fm ay isang serbisyo sa musika na natututo ng gusto mo. Lumikha ng iyong sariling profile, subaybayan kung ano ang iyong pinapakinggan (tinawag namin itong pag-scrob) at kumuha ng mga cool na bagay tulad ng iyong sariling mga tsart ng musika, mga bagong rekomendasyon sa musika, at isang komunidad ng malaking ol \'ng iba pang mga mahilig sa musika.</string>
+    <string name="builder_about_us_positive">OK</string>
+    <string name="action_rate_us">Irate kami</string>
+    <string name="first_name">Unang Pangalan</string>
+    <string name="please_wait">Pakiusap mag hintay&#8230;</string>
+    <string name="album_name">Pangalan ng Album: %1$s</string>
+    <string name="artist_name" translatable="false">Pangalan ng mang-aawit: %1$s</string>
+    <string name="play_count">Ilang beses pinatugtog: %1$s</string>
+</resources>
