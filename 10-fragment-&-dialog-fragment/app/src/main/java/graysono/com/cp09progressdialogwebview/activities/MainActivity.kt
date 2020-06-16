@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
 import graysono.com.cp09progressdialogwebview.enums.DownloadStatus
@@ -170,5 +171,6 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
             .setNegativeButton("No", null)
             .show()
     }
+
 }
 
