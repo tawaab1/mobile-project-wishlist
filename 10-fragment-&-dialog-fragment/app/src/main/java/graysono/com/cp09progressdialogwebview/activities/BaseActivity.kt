@@ -11,4 +11,8 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(isHomeEnabled)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
+
+    companion object {
+        const val REQUEST_CODE_PERMISSION = 1
+    }
 }
