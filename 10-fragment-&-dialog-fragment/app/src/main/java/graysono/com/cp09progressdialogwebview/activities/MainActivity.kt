@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
 import graysono.com.cp09progressdialogwebview.enums.DownloadStatus
@@ -22,6 +23,7 @@ import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadAvailable
 import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadComplete
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import graysono.com.cp09progressdialogwebview.interfaces.IRecyclerViewItem
+
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : BaseActivity(), IDataDownloadAvailable,
@@ -34,6 +36,9 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         displayToolbar(false)
+
+        bnv.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
+        bnv.menu.getItem(1).isChecked = true
 
         lastFmRecyclerViewAdapter = LastFmRecyclerViewAdapter(ArrayList())
 
@@ -170,5 +175,42 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
             .setNegativeButton("No", null)
             .show()
     }
+
+    inner class OnNavigationItemSelectedListener : BottomNavigationView.OnNavigationItemSelectedListener{
+        override fun onNavigationItemSelected(item: MenuItem): Boolean {
+            return when (item.itemId){
+                /**
+                 * navigates to the MainActivity
+                 */
+                R.id.navigation_home -> {
+                    startActivity(Intent(this@MainActivity, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                /**
+                 * navigates to the About Us activity
+                 */
+//                R.id.navigation_profile ->{
+//                    startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                R.id.navigation_wishlist ->{
+//                    startActivity(Intent(this@MainActivity, WishlistActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                R.id.navigation_map ->{
+//                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
+//                    finish()
+//                    true
+//                }
+                else -> onNavigationItemSelected(item)
+            }
+
+        }
+
+    }
 }
+
 
