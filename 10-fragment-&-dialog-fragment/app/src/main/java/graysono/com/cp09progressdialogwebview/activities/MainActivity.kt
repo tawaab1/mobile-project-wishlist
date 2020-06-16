@@ -206,19 +206,22 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
                  */
                 R.id.navigation_profile ->{
                     startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     true
                 }
                 R.id.navigation_wishlist ->{
                     startActivity(Intent(this@MainActivity, WishlistActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     true
                 }
-//                R.id.navigation_map ->{
-//                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
-//                    finish()
-//                    true
-//                }
+                R.id.navigation_map ->{
+                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    true
+                }
                 else -> onNavigationItemSelected(item)
             }
 

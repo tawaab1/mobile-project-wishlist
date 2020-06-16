@@ -168,6 +168,7 @@ class ProfileActivity : BaseActivity() {
                  */
                 R.id.navigation_home -> {
                     startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
                 }
@@ -181,14 +182,16 @@ class ProfileActivity : BaseActivity() {
                 }
                 R.id.navigation_wishlist -> {
                     startActivity(Intent(this@ProfileActivity, WishlistActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
                 }
-//                R.id.navigation_map ->{
-//                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
-//                    finish()
-//                    true
-//                }
+                R.id.navigation_map ->{
+                    startActivity(Intent(this@ProfileActivity, MapActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    finish()
+                    true
+                }
                 else -> onNavigationItemSelected(item)
             }
         }
