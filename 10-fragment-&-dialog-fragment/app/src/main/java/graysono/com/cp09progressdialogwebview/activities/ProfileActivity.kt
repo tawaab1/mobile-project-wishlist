@@ -53,6 +53,8 @@ class ProfileActivity : BaseActivity() {
         requestPermissions()
     }
 
+
+
     private fun requestPermissions()
     {
         ActivityCompat.requestPermissions(
@@ -191,4 +193,6 @@ class ProfileActivity : BaseActivity() {
             }
         }
     }
+
+
 }

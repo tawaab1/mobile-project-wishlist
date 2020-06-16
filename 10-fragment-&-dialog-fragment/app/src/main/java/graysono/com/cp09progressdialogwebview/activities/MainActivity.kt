@@ -23,8 +23,8 @@ import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadAvailable
 import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadComplete
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import graysono.com.cp09progressdialogwebview.interfaces.IRecyclerViewItem
-
 import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : BaseActivity(), IDataDownloadAvailable,
     IDataDownloadComplete, IRecyclerViewItem, IDataReceived {
@@ -58,6 +58,20 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
         )
         rawDataAsyncTask = RawDataAsyncTask(this, this@MainActivity)
         rawDataAsyncTask.execute(url)
+    }
+
+    /*
+       Transition Animation, fragment and activities
+
+     */
+    fun openProfileActivity(view: View?) {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun createURI(
@@ -166,7 +180,7 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
     /*
     exit alert dialog on back pressed, when user presses back button
     gives user option to to exit "yes" or stay "no"
-*/
+    */
     override fun onBackPressed() {
         AlertDialog.Builder(this)
             .setMessage("Are You Sure You want To Exit")
