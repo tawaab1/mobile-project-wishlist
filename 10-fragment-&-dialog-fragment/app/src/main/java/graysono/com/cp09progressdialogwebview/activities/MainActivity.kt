@@ -171,6 +171,44 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
             .setNegativeButton("No", null)
             .show()
     }
-
+//    inner class OnNavigationItemSelectedListener : BottomNavigationView.OnNavigationItemSelectedListener {
+//        override fun onNavigationItemSelected(item: MenuItem): Boolean {
+//            return when (item.itemId) {
+//                /**
+//                 * navigates to the MainActivity
+//                 */
+//                R.id.navigation_home -> {
+//                    startActivity(Intent(this@MainActivity, MainActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                /**
+//                 * navigates to the About Us activity
+//                 */
+//                R.id.navigation_profile -> {
+//                    startActivity(Intent(this@MainActivity, AboutUsActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                /**
+//                 * navigates to the About Us activity
+//                 */
+//                R.id.navigation_maps->{
+//                    startActivity(Intent(this@MainActivity, TranslationActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                /**
+//                 * navigates to the Contact Us activity
+//                 */
+//                R.id.navigation_wishlist->{
+//                    startActivity(Intent(this@MainActivity, ContactUsActivity::class.java))
+//                    finish()
+//                    true
+//                }
+//                else -> onNavigationItemSelected(item)
+//            }
+//        }
+//    }
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Item" />
+    <item android:id="@+id/navigation_maps"
+        android:title="3" />
+    <item android:id="@+id/navigation_profile"
+        android:title="3" />
+    <item android:id="@+id/navigation_wishlist"
+        android:title="3" />
+</menu>
