@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : BaseActivity(), IDataReceived {
     private lateinit var album: Album
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +37,23 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             .placeholder(R.drawable.ic_image_black_48dp)
             .into(imvAlbumImage)
 
+
+        val imageView = findViewById(R.id.fav) as ImageView
+//        imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+        imageView.setOnClickListener {
+            imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+        }
+
+
+
+        val imageButton = ImageButton(this)
+
+
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
+
+
+
 
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
@@ -52,9 +70,15 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
     }
 
+
+
+
+    //fav.setImageResource(R.drawable.ic_baseline_favorite_24)
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
