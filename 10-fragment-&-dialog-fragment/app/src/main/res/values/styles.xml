@@ -20,5 +20,9 @@
     <style name="CustomProgressBarTheme">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
-
+    <style name="DialogFullScreen" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:colorBackground">@android:color/white</item>
+    </style>
 </resources>

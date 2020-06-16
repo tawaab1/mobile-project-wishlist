@@ -17,7 +17,7 @@ class SearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        displayToolbar(true)
+        displayToolbar(true, isTitleEnabled = false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

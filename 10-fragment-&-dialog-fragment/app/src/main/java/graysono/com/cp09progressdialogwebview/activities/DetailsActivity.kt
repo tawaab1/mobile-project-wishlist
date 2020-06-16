@@ -25,7 +25,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        displayToolbar(true)
+        displayToolbar(true, isTitleEnabled = false)
 
         album = intent.extras.getParcelable("album")
 

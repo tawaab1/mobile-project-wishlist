@@ -6,10 +6,11 @@ import kotlinx.android.synthetic.main.activity_details.*
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
-    internal fun displayToolbar(isHomeEnabled: Boolean) {
+    internal fun displayToolbar(isHomeEnabled: Boolean, isTitleEnabled: Boolean) {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(isHomeEnabled)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(isTitleEnabled)
     }
 
     companion object {
