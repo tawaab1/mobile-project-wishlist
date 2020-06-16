@@ -12,6 +12,6 @@ class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        displayToolbar(true)
+        displayToolbar(true, isTitleEnabled = false)
     }
 }

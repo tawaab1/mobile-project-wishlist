@@ -35,7 +35,7 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        displayToolbar(false)
+        displayToolbar(false, isTitleEnabled = false)
 
         bnv.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
         bnv.menu.getItem(1).isChecked = true

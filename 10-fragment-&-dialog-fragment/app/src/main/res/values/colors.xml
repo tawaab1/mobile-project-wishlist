@@ -5,4 +5,5 @@
     <color name="colorAccent">#0098CC</color>
     <color name="bnv_tab_item_foreground">#ffffff</color>
     <color name="mainBackground">#ffffff</color>
+    <color name="colorNull">#00000000</color>
 </resources>
