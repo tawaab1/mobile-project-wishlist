@@ -13,13 +13,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import graysono.com.cp09progressdialogwebview.BuildConfig
 import graysono.com.cp09progressdialogwebview.R
+import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_wishlist.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,6 +36,9 @@ class ProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        bnv3.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
+        bnv3.menu.getItem(1).isChecked = true
 
         imgCapture = ImageCapture(this@ProfileActivity)
         imvProfile = findViewById(R.id.imvProfile)
@@ -146,6 +153,42 @@ class ProfileActivity : BaseActivity() {
 
         fun convertBitmapToDrawable(resources: Resources, bitmap: Bitmap): BitmapDrawable {
             return BitmapDrawable(resources, bitmap)
+        }
+    }
+
+
+    inner class OnNavigationItemSelectedListener :
+        BottomNavigationView.OnNavigationItemSelectedListener {
+        override fun onNavigationItemSelected(item: MenuItem): Boolean {
+            return when (item.itemId) {
+                /**
+                 * navigates to the MainActivity
+                 */
+                R.id.navigation_home -> {
+                    startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                /**
+                 * navigates to the About Us activity
+                 */
+                R.id.navigation_profile -> {
+                    startActivity(Intent(this@ProfileActivity, ProfileActivity::class.java))
+                    finish()
+                    true
+                }
+                R.id.navigation_wishlist -> {
+                    startActivity(Intent(this@ProfileActivity, WishlistActivity::class.java))
+                    finish()
+                    true
+                }
+//                R.id.navigation_map ->{
+//                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
+//                    finish()
+//                    true
+//                }
+                else -> onNavigationItemSelected(item)
+            }
         }
     }
 }
