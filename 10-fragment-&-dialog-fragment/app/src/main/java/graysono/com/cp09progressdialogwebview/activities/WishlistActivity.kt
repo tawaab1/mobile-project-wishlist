@@ -126,6 +126,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
                  */
                 R.id.navigation_home -> {
                     startActivity(Intent(this@WishlistActivity, MainActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                     finish()
                     true
                 }
@@ -134,6 +135,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
                  */
                 R.id.navigation_profile ->{
                     startActivity(Intent(this@WishlistActivity, ProfileActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     true
                 }
@@ -142,11 +144,12 @@ class WishlistActivity : BaseActivity(), IItemClick {
                     finish()
                     true
                 }
-//                R.id.navigation_map ->{
-//                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
-//                    finish()
-//                    true
-//                }
+                R.id.navigation_map ->{
+                    startActivity(Intent(this@WishlistActivity, MapActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    finish()
+                    true
+                }
                 else -> onNavigationItemSelected(item)
             }
         }

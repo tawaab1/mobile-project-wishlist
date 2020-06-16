@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">09 Alert Builder Dialog</string>
+    <string name="action_main">Main</string>
+    <string name="action_search">Soek</string>
+    <string name="search_label">Soek kunstenaar</string>
+    <string name="search_hint">Soek kunstenaar</string>
+    <string name="action_about_us">Oor ons</string>
+    <string name="builder_about_us_title">Oor ons</string>
+    <string name="builder_about_us_message">Last.fm is \'n musiekdiens wat leer waarvan jy hou. Skep u eie profiel, spoor waarna u luister (ons noem dit skrobbering) en kry oulike goed soos u eie musiekdiagramme, nuwe musiekaanbevelings en \'n groot gemeenskap van ander musiekliefhebbers.</string>
+    <string name="builder_about_us_positive">OK</string>
+    <string name="action_rate_us">Gradeer ons</string>
+    <string name="first_name">Eerste naam</string>
+    <string name="please_wait">Wag asseblief&#8230;</string>
+    <string name="album_name">" Albumnaam: %1$s"</string>
+    <string name="artist_name">" Kunstenaar se naam: %1$s"</string>
+    <string name="play_count">" Speeltelling: %1$s"</string>
+</resources>
