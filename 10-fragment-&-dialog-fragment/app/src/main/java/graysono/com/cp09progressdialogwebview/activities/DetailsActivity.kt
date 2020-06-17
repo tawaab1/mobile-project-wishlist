@@ -1,26 +1,39 @@
 package graysono.com.cp09progressdialogwebview.activities
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+<<<<<<< HEAD
 import android.webkit.WebView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+=======
+import android.widget.*
+import androidx.appcompat.widget.PopupMenu
+>>>>>>> master
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
+import graysono.com.cp09progressdialogwebview.enums.DatabaseStatus
 import graysono.com.cp09progressdialogwebview.fragments.RateUsDialogFragment
 import graysono.com.cp09progressdialogwebview.fragments.WebViewFragment
 import graysono.com.cp09progressdialogwebview.helpers.Album
+import graysono.com.cp09progressdialogwebview.helpers.DBHelper
+import graysono.com.cp09progressdialogwebview.helpers.Wishlist
+import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : BaseActivity(), IDataReceived {
     private lateinit var album: Album
+    private lateinit var wishlists: ArrayList<Wishlist>
+    private lateinit var dbHelper: DBHelper
+    private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,16 +52,19 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             .placeholder(R.drawable.ic_image_black_48dp)
             .into(imvAlbumImage)
 
+        var counter = 1
+
 
         val imageView = findViewById(R.id.fav) as ImageView
-//        imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
         imageView.setOnClickListener {
-            imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+            if (counter == 1) {
+                imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+                counter = 0
+            } else {
+                imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                counter = 1
+            }
         }
-
-
-
-        val imageButton = ImageButton(this)
 
 
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
@@ -57,6 +73,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
+<<<<<<< HEAD
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
@@ -64,6 +81,8 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
+=======
+>>>>>>> master
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             val wbvFrag = WebViewFragment(album.url)
@@ -77,14 +96,13 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
-    //fav.setImageResource(R.drawable.ic_baseline_favorite_24)
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
 
     }
 
+<<<<<<< HEAD
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_main -> {
@@ -114,6 +132,9 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             else -> super.onOptionsItemSelected(item)
         }
     }
+=======
+
+>>>>>>> master
 
     override fun onDataReceived(data: String) {
         val inflater = layoutInflater
