@@ -56,7 +56,24 @@ class DetailsActivity : BaseActivity(), IDataReceived {
                 counter = 1
             }
         }
+
+
+        btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
+
+
+
+
+    inner class WebViewButtonOnClickListener : View.OnClickListener {
+        override fun onClick(view: View) {
+            val wbvFrag = WebViewFragment(album.url)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, wbvFrag)
+                .commit()
+            btnAlbumUrl.isEnabled = false
+        }
+    }
+
 
 
 
