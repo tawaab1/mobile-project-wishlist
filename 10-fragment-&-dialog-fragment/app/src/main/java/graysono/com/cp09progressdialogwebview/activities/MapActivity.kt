@@ -31,14 +31,13 @@ import kotlinx.android.synthetic.main.activity_wishlist.*
 class MapActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
-//    private lateinit var sharedPref: SharedPreferences
-//    private lateinit var fusedLocClient: FusedLocationProviderClient
-//    private lateinit var locReq: LocationRequest
-//    private lateinit var locCallback: LocationCallback
-//    private lateinit var clusterManager: ClusterManager<MapsData>
-//    private lateinit var markerCluster: MarkerCluster
-    //private lateinit var customToast: CustomToast
-//    private lateinit var recordingStudioData: ArrayList<MapsData>
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var fusedLocClient: FusedLocationProviderClient
+    private lateinit var locReq: LocationRequest
+    private lateinit var locCallback: LocationCallback
+    private lateinit var clusterManager: ClusterManager<MapsData>
+    private lateinit var markerCluster: MarkerCluster
+    private lateinit var customToast: CustomToast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +45,13 @@ class MapActivity : BaseActivity(), OnMapReadyCallback {
         val mapFragment: SupportMapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this@MapActivity)
+        fusedLocClient = LocationServices.getFusedLocationProviderClient(this@MapActivity)
+        locReq = LocationRequest()
+        locCallback = LocationCallback()
+        customToast = CustomToast(this@MapActivity)
+        getLastLocation()
+
 
 //        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 //        mapFragment.getMapAsync(this)
@@ -105,8 +111,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback {
         val data: ArrayList<MapsData> = arrayListOf(
 //            MapsData("Sunset Sound", LatLng(34.0977818, -118.3349175),R.drawable.user_profile),
 //            MapsData("Sunset Sound", LatLng(34.0977818, -118.3349175),R.drawable.user_profile),
-            MapsData("Sunset Sound", LatLng(34.0977818, -118.3349175),R.drawable.user_profile)
-
+            MapsData("Sunset Sound", LatLng(34.0977818, -118.3349175),"https://www.sunsetsound.com")
 
         )
 
@@ -119,11 +124,6 @@ class MapActivity : BaseActivity(), OnMapReadyCallback {
                     .position(d.location)
                     .title((d.name))
             )
-            val overlaySize = 100f
-            val googleOverLay: GroundOverlayOptions = GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(d.drawable))
-                .position(d.location,overlaySize)
-            map.addGroundOverlay(googleOverLay)
         }
 
         setMapLongClick(map)
