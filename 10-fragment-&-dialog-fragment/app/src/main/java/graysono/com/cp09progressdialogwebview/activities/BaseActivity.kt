@@ -15,5 +15,6 @@ open class BaseActivity : AppCompatActivity() {
 
     companion object {
         const val REQUEST_CODE_PERMISSION = 1
+        const val REQUEST_LOCATION_PERMISSION = 1
     }
 }
