@@ -30,4 +30,6 @@
     <string name="delete_item">Delete Wishlist Item</string>
     <string name="delete_wishlist_item">Are you sure you want to delete this wishlist item?</string>
     <string name="builder_about_us_negative">Cancel</string>
+
+
 </resources>
