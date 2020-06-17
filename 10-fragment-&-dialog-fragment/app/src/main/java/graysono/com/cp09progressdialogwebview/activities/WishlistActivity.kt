@@ -56,6 +56,11 @@ class WishlistActivity : BaseActivity(), IItemClick {
             addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
         }
 
+
+
+
+
+
         recyclerView = findViewById(R.id.rcvWishlists)
         val layoutManager = LinearLayoutManager(this@WishlistActivity)
         recyclerView.layoutManager = layoutManager
@@ -65,6 +70,8 @@ class WishlistActivity : BaseActivity(), IItemClick {
         setupSpinner()
     }
 
+<<<<<<< HEAD
+=======
     private fun setupSpinner() {
         val sortedSpinner = arrayOf<String?>(
             "Sort by:",
@@ -109,10 +116,13 @@ class WishlistActivity : BaseActivity(), IItemClick {
             }
         }
 
+>>>>>>> master
     private fun readDatabase() {
         wishlists = dbHelper.selectAll()
         wishlistRecyclerViewAdapter.notifyData(wishlists)
     }
+
+
     private fun addNewWishlistDialog(status: DatabaseStatus, id: Int, txt: String) {
         val dialog = Dialog(this@WishlistActivity, R.style.DialogFullScreen)
         dialog.setCancelable(true)
