@@ -29,6 +29,10 @@
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/action_settings"
                 app:showAsAction="ifRoom" />
+            <item android:title="Privacy Policy"
+                android:id="@+id/action_privacy_policy"
+                android:icon="@drawable/ic_info_black_24dp"
+                />
         </menu>
     </item>
 </menu>

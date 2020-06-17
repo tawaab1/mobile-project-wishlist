@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,6 +27,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         displayToolbar(true, isTitleEnabled = false)
+
 
         album = intent.extras.getParcelable("album")
 
@@ -59,6 +61,8 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
     }
+
+
 
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
@@ -97,6 +101,14 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             }
             R.id.action_rate_us -> {
                 showDialog()
+                true
+            }
+            R.id.action_settings -> {
+                startActivity(Intent(this@DetailsActivity, SettingsActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                true
+            }
+            R.id.action_privacy_policy -> {
                 true
             }
             else -> super.onOptionsItemSelected(item)
