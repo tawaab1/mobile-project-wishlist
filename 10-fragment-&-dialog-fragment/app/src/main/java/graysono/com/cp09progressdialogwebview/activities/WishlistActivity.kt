@@ -137,18 +137,14 @@ class WishlistActivity : BaseActivity(), IItemClick {
         btnAddWishlist.setOnClickListener {
             if (status == DatabaseStatus.UPDATE) {
                 dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
-//                val progressDialog = ProgressDialog(this)
-//                progressDialog.setMessage("Updating..")
-//                progressDialog.setCancelable(false)
-//                progressDialog.show()
-//                Handler().postDelayed({progressDialog.dismiss()}, 2000)
-                val builder = AlertDialog.Builder(this)
-                val dialogView = layoutInflater.inflate(R.layout.custom_progress_bar,null)
-                builder.setView(dialogView)
-                builder.setCancelable(false)
-                val dialog = builder.create()
+                val builder1 = AlertDialog.Builder(this)
+                val dialogView1 = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
+                builder1.setView(dialogView1)
+                builder1.setCancelable(false)
+                val dialog = builder1.create()
+                dialog.show()
+                Handler().postDelayed({dialog.dismiss()}, 1000)
                 readDatabase()
-                Handler().postDelayed({dialog.dismiss()}, 2000)
 
             } else if (status == DatabaseStatus.INSERT) {
                 dbHelper.insert(edtAddWishlist.text.toString().trim())
@@ -156,19 +152,22 @@ class WishlistActivity : BaseActivity(), IItemClick {
 //                progressDialog.setMessage("Adding..")
 //                progressDialog.setCancelable(false)
 //                progressDialog.show()
-//
-//                Handler().postDelayed({progressDialog.dismiss()}, 2000)
+//                Handler().postDelayed({progressDialog.dismiss()}, 1000)
+
+
                 val builder = AlertDialog.Builder(this)
-                val dialogView = layoutInflater.inflate(R.layout.custom_progress_bar,null)
+                val dialogView = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
                 builder.setView(dialogView)
                 builder.setCancelable(false)
                 val dialog = builder.create()
-                //dialog.show()
+                dialog.show()
+                Handler().postDelayed({dialog.dismiss()}, 1000)
                 readDatabase()
+
             }
-            dialog.show()
-            Handler().postDelayed({dialog.dismiss()}, 2000)
-            //dialog.dismiss()
+            //dialog.show()
+
+            dialog.dismiss()
         }
 
         btnCloseWishlist.setOnClickListener { dialog.dismiss() }
