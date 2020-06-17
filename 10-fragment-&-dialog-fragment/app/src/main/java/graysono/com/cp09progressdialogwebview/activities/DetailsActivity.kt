@@ -1,25 +1,31 @@
 package graysono.com.cp09progressdialogwebview.activities
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.widget.PopupMenu
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
+import graysono.com.cp09progressdialogwebview.enums.DatabaseStatus
 import graysono.com.cp09progressdialogwebview.fragments.RateUsDialogFragment
 import graysono.com.cp09progressdialogwebview.fragments.WebViewFragment
 import graysono.com.cp09progressdialogwebview.helpers.Album
+import graysono.com.cp09progressdialogwebview.helpers.DBHelper
+import graysono.com.cp09progressdialogwebview.helpers.Wishlist
+import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : BaseActivity(), IDataReceived {
     private lateinit var album: Album
+    private lateinit var wishlists: ArrayList<Wishlist>
+    private lateinit var dbHelper: DBHelper
+    private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,19 +43,57 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             .placeholder(R.drawable.ic_image_black_48dp)
             .into(imvAlbumImage)
 
-
+        val boolean = fav
         val imageView = findViewById(R.id.fav) as ImageView
 //        imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
         imageView.setOnClickListener {
             imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+//            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
+
         }
 
+    }
+    private fun addNewWishlistDialog(status: DatabaseStatus, id: Int, txt: String) {
+        val dialog = Dialog(this@DetailsActivity, R.style.DialogFullScreen)
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.setContentView(R.layout.fragment_add_wishlist)
+
+        val edtAddWishlist: EditText = dialog.findViewById(R.id.edtAddWishlist)
+        val btnCloseWishlist: Button = dialog.findViewById(R.id.btnCloseWishlist)
+        val btnAddWishlist: Button = dialog.findViewById(R.id.btnAddWishlist)
+        val txvAddWishlist: TextView = dialog.findViewById(R.id.txvAddWishlist)
+
+        if (status == DatabaseStatus.UPDATE) {
+            edtAddWishlist.setText(txt)
+            btnAddWishlist.text = "Update"
+            txvAddWishlist.text = "Update Wishlist"
+        } else {
+            edtAddWishlist.setText("")
+            btnAddWishlist.text = "Add"
+            txvAddWishlist.text = "Add New Wishlist"
+        }
+
+        btnAddWishlist.setOnClickListener {
+            if (status == DatabaseStatus.UPDATE) {
+                dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
+                readDatabase()
+            } else if (status == DatabaseStatus.INSERT) {
+                dbHelper.insert(edtAddWishlist.text.toString().trim())
+                readDatabase()
+            }
+            dialog.dismiss()
+        }
+
+        btnCloseWishlist.setOnClickListener { dialog.dismiss() }
+
+        dialog.show()
+    }
 
 
-        val imageButton = ImageButton(this)
-
-
-        btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
+    private fun readDatabase() {
+        wishlists = dbHelper.selectAll()
+        wishlistRecyclerViewAdapter.notifyData(wishlists)
     }
 
 

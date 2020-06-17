@@ -42,10 +42,15 @@ class WishlistActivity : BaseActivity(), IItemClick {
         dbHelper = DBHelper(this@WishlistActivity)
         wishlists = dbHelper.selectAll()
 
-        btnAdd = findViewById(R.id.btnAddWishlist)
-        btnAdd.setOnClickListener {
-            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
-        }
+//        btnAdd = findViewById(R.id.btnAddWishlist)
+//        btnAdd.setOnClickListener {
+//            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
+//        }
+
+
+
+
+
 
         recyclerView = findViewById(R.id.rcvWishlists)
         val layoutManager = LinearLayoutManager(this@WishlistActivity)
@@ -55,10 +60,13 @@ class WishlistActivity : BaseActivity(), IItemClick {
 
         readDatabase()
     }
+
     private fun readDatabase() {
         wishlists = dbHelper.selectAll()
         wishlistRecyclerViewAdapter.notifyData(wishlists)
     }
+
+
     private fun addNewWishlistDialog(status: DatabaseStatus, id: Int, txt: String) {
         val dialog = Dialog(this@WishlistActivity, R.style.DialogFullScreen)
         dialog.setCancelable(true)
