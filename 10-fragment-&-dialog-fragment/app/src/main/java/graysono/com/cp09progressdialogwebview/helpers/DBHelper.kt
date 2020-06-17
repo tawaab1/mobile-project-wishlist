@@ -58,6 +58,61 @@ class DBHelper(context: Context) :
         )
     }
 
+    fun newest(): ArrayList<Wishlist>{
+        val wishlists = ArrayList<Wishlist>()
+        val selectQuery = "SELECT * FROM $TABLE_NAME ORDER BY $COLUMN_DATE_TIME DESC"
+        val db: SQLiteDatabase = this.writableDatabase
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val wishlist = Wishlist()
+                wishlist.id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
+                wishlist.name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
+                wishlist.dateTime = cursor.getString(cursor.getColumnIndex(COLUMN_DATE_TIME))
+                wishlists.add(wishlist)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return wishlists
+    }
+    fun oldest(): ArrayList<Wishlist> {
+        val wishlists = ArrayList<Wishlist>()
+        val selectQuery = "SELECT * FROM $TABLE_NAME ORDER BY $COLUMN_DATE_TIME ASC"
+        val db: SQLiteDatabase = this.writableDatabase
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val wishlist = Wishlist()
+                wishlist.id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
+                wishlist.name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
+                wishlist.dateTime = cursor.getString(cursor.getColumnIndex(COLUMN_DATE_TIME))
+                wishlists.add(wishlist)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return wishlists
+    }
+    fun alphabetical(): ArrayList<Wishlist> {
+        val wishlists = ArrayList<Wishlist>()
+        val selectQuery = "SELECT * FROM $TABLE_NAME ORDER BY $COLUMN_NAME"
+        val db: SQLiteDatabase = this.writableDatabase
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val wishlist = Wishlist()
+                wishlist.id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
+                wishlist.name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
+                wishlist.dateTime = cursor.getString(cursor.getColumnIndex(COLUMN_DATE_TIME))
+                wishlists.add(wishlist)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return wishlists
+    }
+
     fun delete(id: Long) {
         val db: SQLiteDatabase = this.writableDatabase
         db.delete(
