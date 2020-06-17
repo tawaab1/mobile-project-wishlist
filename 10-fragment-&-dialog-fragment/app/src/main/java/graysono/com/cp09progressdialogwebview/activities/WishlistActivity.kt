@@ -186,6 +186,14 @@ class WishlistActivity : BaseActivity(), IItemClick {
                     deleteWishlistAlertDialog.show(
                         R.string.delete_item, dbHelper, wishlist, wishlistRecyclerViewAdapter
                     )
+//                    val builder2 = AlertDialog.Builder(this)
+//                    val dialogView2 = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
+//                    builder2.setView(dialogView2)
+//                    builder2.setCancelable(false)
+//                    val dialog = builder2.create()
+//                    dialog.show()
+//                    Handler().postDelayed({dialog.dismiss()}, 1000)
+
                     readDatabase()
                 }
             }
