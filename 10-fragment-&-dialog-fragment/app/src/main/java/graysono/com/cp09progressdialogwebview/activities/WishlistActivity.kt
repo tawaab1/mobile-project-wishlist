@@ -1,8 +1,11 @@
 package graysono.com.cp09progressdialogwebview.activities
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -18,6 +21,7 @@ import graysono.com.cp09progressdialogwebview.helpers.Wishlist
 import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IItemClick
 import kotlinx.android.synthetic.main.content_wishlist.*
+import kotlinx.coroutines.delay
 
 class WishlistActivity : BaseActivity(), IItemClick {
 
@@ -27,6 +31,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
     private lateinit var recyclerView: RecyclerView
     private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
     private lateinit var sortSpinner: Spinner
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -132,11 +137,36 @@ class WishlistActivity : BaseActivity(), IItemClick {
         btnAddWishlist.setOnClickListener {
             if (status == DatabaseStatus.UPDATE) {
                 dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
+                val builder1 = AlertDialog.Builder(this)
+                val dialogView1 = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
+                builder1.setView(dialogView1)
+                builder1.setCancelable(false)
+                val dialog = builder1.create()
+                dialog.show()
+                Handler().postDelayed({dialog.dismiss()}, 1000)
                 readDatabase()
+
             } else if (status == DatabaseStatus.INSERT) {
                 dbHelper.insert(edtAddWishlist.text.toString().trim())
+//                val progressDialog = ProgressDialog(this)
+//                progressDialog.setMessage("Adding..")
+//                progressDialog.setCancelable(false)
+//                progressDialog.show()
+//                Handler().postDelayed({progressDialog.dismiss()}, 1000)
+
+
+                val builder = AlertDialog.Builder(this)
+                val dialogView = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
+                builder.setView(dialogView)
+                builder.setCancelable(false)
+                val dialog = builder.create()
+                dialog.show()
+                Handler().postDelayed({dialog.dismiss()}, 1000)
                 readDatabase()
+
             }
+            //dialog.show()
+
             dialog.dismiss()
         }
 
@@ -156,6 +186,14 @@ class WishlistActivity : BaseActivity(), IItemClick {
                     deleteWishlistAlertDialog.show(
                         R.string.delete_item, dbHelper, wishlist, wishlistRecyclerViewAdapter
                     )
+//                    val builder2 = AlertDialog.Builder(this)
+//                    val dialogView2 = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
+//                    builder2.setView(dialogView2)
+//                    builder2.setCancelable(false)
+//                    val dialog = builder2.create()
+//                    dialog.show()
+//                    Handler().postDelayed({dialog.dismiss()}, 1000)
+
                     readDatabase()
                 }
             }
