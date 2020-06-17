@@ -119,6 +119,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
         dialog.setCanceledOnTouchOutside(true)
         dialog.setContentView(R.layout.fragment_add_wishlist)
 
+
         val edtAddWishlist: EditText = dialog.findViewById(R.id.edtAddWishlist)
         val btnCloseWishlist: Button = dialog.findViewById(R.id.btnCloseWishlist)
         val btnAddWishlist: Button = dialog.findViewById(R.id.btnAddWishlist)
@@ -128,26 +129,42 @@ class WishlistActivity : BaseActivity(), IItemClick {
             edtAddWishlist.setText(txt)
             btnAddWishlist.text = "Update"
             txvAddWishlist.text = "Update Wishlist"
+
+
         } else {
             edtAddWishlist.setText("")
             btnAddWishlist.text = "Add"
             txvAddWishlist.text = "Add New Wishlist"
+
+
         }
 
-        btnAddWishlist.setOnClickListener {
-            if (status == DatabaseStatus.UPDATE) {
-                dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
-                val builder1 = AlertDialog.Builder(this)
-                val dialogView1 = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
-                builder1.setView(dialogView1)
-                builder1.setCancelable(false)
-                val dialog = builder1.create()
-                dialog.show()
-                Handler().postDelayed({dialog.dismiss()}, 1000)
-                readDatabase()
 
-            } else if (status == DatabaseStatus.INSERT) {
-                dbHelper.insert(edtAddWishlist.text.toString().trim())
+    btnAddWishlist.setOnClickListener {
+        when {
+
+            edtAddWishlist.text.isBlank() -> {
+                Toast.makeText(this@WishlistActivity, "Name cannot be empty", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            else -> {
+
+                if (status == DatabaseStatus.UPDATE) {
+
+                    dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
+                    val builder1 = AlertDialog.Builder(this)
+                    val dialogView1 = layoutInflater.inflate(R.layout.custom_wishlist_bar, null)
+                    builder1.setView(dialogView1)
+                    builder1.setCancelable(false)
+                    val dialog = builder1.create()
+                    dialog.show()
+                    Handler().postDelayed({ dialog.dismiss() }, 1000)
+                    readDatabase()
+
+                } else if (status == DatabaseStatus.INSERT) {
+
+
+                    dbHelper.insert(edtAddWishlist.text.toString().trim())
 //                val progressDialog = ProgressDialog(this)
 //                progressDialog.setMessage("Adding..")
 //                progressDialog.setCancelable(false)
@@ -155,20 +172,23 @@ class WishlistActivity : BaseActivity(), IItemClick {
 //                Handler().postDelayed({progressDialog.dismiss()}, 1000)
 
 
-                val builder = AlertDialog.Builder(this)
-                val dialogView = layoutInflater.inflate(R.layout.custom_wishlist_bar,null)
-                builder.setView(dialogView)
-                builder.setCancelable(false)
-                val dialog = builder.create()
-                dialog.show()
-                Handler().postDelayed({dialog.dismiss()}, 1000)
-                readDatabase()
+                    val builder = AlertDialog.Builder(this)
+                    val dialogView = layoutInflater.inflate(R.layout.custom_wishlist_bar, null)
+                    builder.setView(dialogView)
+                    builder.setCancelable(false)
+                    val dialog = builder.create()
+                    dialog.show()
+                    Handler().postDelayed({ dialog.dismiss() }, 1000)
+                    readDatabase()
 
+                }
+                //dialog.show()
+
+                dialog.dismiss()
             }
-            //dialog.show()
-
-            dialog.dismiss()
         }
+    }
+
 
         btnCloseWishlist.setOnClickListener { dialog.dismiss() }
 
