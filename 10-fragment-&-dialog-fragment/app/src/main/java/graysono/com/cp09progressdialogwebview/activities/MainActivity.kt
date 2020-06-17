@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -18,17 +20,21 @@ import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
 import graysono.com.cp09progressdialogwebview.enums.DownloadStatus
 import graysono.com.cp09progressdialogwebview.fragments.RateUsDialogFragment
+import graysono.com.cp09progressdialogwebview.fragments.WebViewFragment
 import graysono.com.cp09progressdialogwebview.helpers.*
 import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadAvailable
 import graysono.com.cp09progressdialogwebview.interfaces.IDataDownloadComplete
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import graysono.com.cp09progressdialogwebview.interfaces.IRecyclerViewItem
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_privacy_policy.*
+import kotlinx.android.synthetic.main.fragment_web.*
 
 
 class MainActivity : BaseActivity(), IDataDownloadAvailable,
     IDataDownloadComplete, IRecyclerViewItem, IDataReceived {
 
+    private lateinit var webView: WebView
     private lateinit var rawDataAsyncTask: RawDataAsyncTask
     private lateinit var lastFmRecyclerViewAdapter: LastFmRecyclerViewAdapter
 
@@ -132,6 +138,12 @@ class MainActivity : BaseActivity(), IDataDownloadAvailable,
             }
             R.id.action_settings -> {
                 startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                true
+            }
+            R.id.action_privacy_policy -> {
+                startActivity(Intent(this@MainActivity, PrivacyPolicyActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 true
             }
             else -> super.onOptionsItemSelected(item)

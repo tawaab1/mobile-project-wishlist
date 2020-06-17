@@ -6,8 +6,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+<<<<<<< HEAD
+import android.webkit.WebView
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+=======
 import android.widget.*
 import androidx.appcompat.widget.PopupMenu
+>>>>>>> master
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
@@ -32,6 +40,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         displayToolbar(true, isTitleEnabled = false)
+
 
         album = intent.extras.getParcelable("album")
 
@@ -64,6 +73,16 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
+<<<<<<< HEAD
+    private fun showDialog() {
+        val dialogFragment = RateUsDialogFragment(this)
+        dialogFragment.show(supportFragmentManager, null)
+    }
+
+
+
+=======
+>>>>>>> master
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             val wbvFrag = WebViewFragment(album.url)
@@ -83,7 +102,39 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
     }
 
+<<<<<<< HEAD
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_main -> {
+                startActivity(Intent(this@DetailsActivity, SearchActivity::class.java))
+                finish()
+                true
+            }
+            R.id.action_about -> {
+                val aboutUsAlertDialog = CustomAlertDialog(this@DetailsActivity, R.layout.custom_about_us)
+                aboutUsAlertDialog.show(
+                    R.string.builder_about_us_title
+                )
+                true
+            }
+            R.id.action_rate_us -> {
+                showDialog()
+                true
+            }
+            R.id.action_settings -> {
+                startActivity(Intent(this@DetailsActivity, SettingsActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                true
+            }
+            R.id.action_privacy_policy -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+=======
 
+>>>>>>> master
 
     override fun onDataReceived(data: String) {
         val inflater = layoutInflater
