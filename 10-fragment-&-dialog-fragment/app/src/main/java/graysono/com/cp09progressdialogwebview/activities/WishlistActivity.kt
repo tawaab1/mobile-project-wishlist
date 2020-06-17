@@ -42,10 +42,10 @@ class WishlistActivity : BaseActivity(), IItemClick {
         dbHelper = DBHelper(this@WishlistActivity)
         wishlists = dbHelper.selectAll()
 
-//        btnAdd = findViewById(R.id.btnAddWishlist)
-//        btnAdd.setOnClickListener {
-//            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
-//        }
+        btnAdd = findViewById(R.id.btnAddWishlist)
+        btnAdd.setOnClickListener {
+            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
+        }
 
 
 
