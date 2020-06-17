@@ -3,18 +3,25 @@ package graysono.com.cp09progressdialogwebview.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.lifecycle.Transformations.map
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import graysono.com.cp09progressdialogwebview.R
 import kotlinx.android.synthetic.main.activity_map.*
 import kotlinx.android.synthetic.main.activity_wishlist.*
 
 class MapActivity : BaseActivity(), OnMapReadyCallback {
+
     private lateinit var map: GoogleMap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
+        val mapFragment: SupportMapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this@MapActivity)
 
         bnv4.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
         bnv4.menu.getItem(1).isChecked = true
@@ -62,7 +69,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(p0: GoogleMap?) {
-        map = googleMap
+        //map = googleMap
         TODO("Not yet implemented")
     }
 }
