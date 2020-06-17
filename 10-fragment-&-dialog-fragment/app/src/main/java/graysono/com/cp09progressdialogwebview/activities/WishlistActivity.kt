@@ -4,10 +4,8 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +26,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
     private lateinit var btnAdd: Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
+    private lateinit var sortSpinner: Spinner
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +34,13 @@ class WishlistActivity : BaseActivity(), IItemClick {
         setContentView(R.layout.activity_wishlist)
         displayToolbar(isHomeEnabled = true, isTitleEnabled = false)
 
+
+
         bnv2.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener())
         bnv2.menu.getItem(1).isChecked = true
+
+        val sortButton = findViewById<Button>(R.id.sortBtn)
+        sortButton.setOnClickListener(SortButtonClickHandler())
 
         wishlists = ArrayList()
         dbHelper = DBHelper(this@WishlistActivity)
@@ -53,8 +57,53 @@ class WishlistActivity : BaseActivity(), IItemClick {
         wishlistRecyclerViewAdapter = WishlistRecyclerViewAdapter(this, wishlists)
         recyclerView.adapter = wishlistRecyclerViewAdapter
 
-        readDatabase()
+        setupSpinner()
     }
+
+    private fun setupSpinner() {
+        val sortedSpinner = arrayOf<String?>(
+            "Sort by:",
+            "Newest",
+            "Oldest",
+            "Alphabetical"
+        )
+
+        sortSpinner = findViewById(R.id.sortingSpinner)
+        sortSpinner.adapter = ArrayAdapter<Any?>(
+            this@WishlistActivity,
+            R.layout.support_simple_spinner_dropdown_item,
+            sortedSpinner
+        )
+    }
+    inner class SortButtonClickHandler : View.OnClickListener {
+        override fun onClick(v: View) {
+
+
+            val sortSelected =
+                this@WishlistActivity.sortSpinner.selectedItem.toString()
+
+                when (sortSelected) {
+                    "Newest" -> {
+                        wishlists = dbHelper.newest()
+                        wishlistRecyclerViewAdapter.notifyData(wishlists)
+                    }
+                    "Oldest" -> {
+                        wishlists = dbHelper.oldest()
+                        wishlistRecyclerViewAdapter.notifyData(wishlists)
+                    }
+                    "Alphabetical" -> {
+                        wishlists = dbHelper.alphabetical()
+                        wishlistRecyclerViewAdapter.notifyData(wishlists)
+                    }
+                    else ->
+                    {
+                        readDatabase()
+                    }
+                }
+
+            }
+        }
+
     private fun readDatabase() {
         wishlists = dbHelper.selectAll()
         wishlistRecyclerViewAdapter.notifyData(wishlists)
