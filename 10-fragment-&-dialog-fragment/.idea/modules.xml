@@ -3,23 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/10-fragment-&amp;-dialog-fragment.iml" filepath="$PROJECT_DIR$/10-fragment-&amp;-dialog-fragment.iml" group="10-fragment-&amp;-dialog-fragment" />
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-=======
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-=======
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/app/10-fragment-&amp;-dialog-fragment-app.iml" filepath="$PROJECT_DIR$/app/10-fragment-&amp;-dialog-fragment-app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mobile-project-wishlist-10-fragment-&amp;-dialog-fragment-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mobile-project-wishlist-10-fragment-&amp;-dialog-fragment-app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/10-fragment-&amp;-dialog-fragment-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/10-fragment-&amp;-dialog-fragment-app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/mobile-project-wishlist-10-fragment-&amp;-dialog-fragment-app.iml" filepath="$PROJECT_DIR$/app/mobile-project-wishlist-10-fragment-&amp;-dialog-fragment-app.iml" group="10-fragment-&amp;-dialog-fragment/app" />
->>>>>>> master
->>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
->>>>>>> master
     </modules>
   </component>
 </project>

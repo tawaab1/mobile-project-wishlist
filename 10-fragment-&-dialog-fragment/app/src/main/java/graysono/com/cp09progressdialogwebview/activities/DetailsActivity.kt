@@ -47,7 +47,6 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             .placeholder(R.drawable.ic_image_black_48dp)
             .into(imvAlbumImage)
 
-        var counter = 1
 
 
 
@@ -69,27 +68,17 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
     }
 
 
 
 
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
 
 
 
-=======
-<<<<<<< HEAD
->>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
->>>>>>> master
+
+
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
@@ -97,14 +86,6 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
->>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
->>>>>>> master
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             val wbvFrag = WebViewFragment(album.url)
