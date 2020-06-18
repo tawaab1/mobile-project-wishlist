@@ -1,28 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.lifecycle:lifecycle-runtime:2.2.0@aar">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1ffa789cbb74f1523ed1b2339b1fe53e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1ffa789cbb74f1523ed1b2339b1fe53e/res" />
-=======
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/303fd6091d67aee43ecf6236573c8956/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/303fd6091d67aee43ecf6236573c8956/res" />
-=======
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9f7be494fa9463e3e841a7a3cac82eff/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9f7be494fa9463e3e841a7a3cac82eff/res" />
-=======
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66a32647294d53d52ea0348a5954b64c/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/66a32647294d53d52ea0348a5954b64c/res" />
-=======
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50c25e21ed72c7c9d62429ffa60cda3a/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50c25e21ed72c7c9d62429ffa60cda3a/res" />
->>>>>>> master
->>>>>>> 60c6214e83e074d43e2c490654e3fc3744beca44
->>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
->>>>>>> master
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/065c09ea39b2a8c986d11b5855d37afe/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/065c09ea39b2a8c986d11b5855d37afe/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
