@@ -90,10 +90,6 @@ class WishlistActivity : BaseActivity(), IItemClick {
         )
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     private fun setupSpinner() {
         val sortedSpinner = arrayOf<String?>(
             "Sort by:",
