@@ -13,6 +13,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
 import graysono.com.cp09progressdialogwebview.enums.DatabaseStatus
@@ -28,7 +29,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
 
     private lateinit var wishlists: ArrayList<Wishlist>
     private lateinit var dbHelper: DBHelper
-    private lateinit var btnAdd: Button
+    private lateinit var btnAdd: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
     private lateinit var sortSpinner: Spinner
@@ -90,10 +91,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
         )
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> master
     private fun setupSpinner() {
         val sortedSpinner = arrayOf<String?>(
             "Sort by:",
