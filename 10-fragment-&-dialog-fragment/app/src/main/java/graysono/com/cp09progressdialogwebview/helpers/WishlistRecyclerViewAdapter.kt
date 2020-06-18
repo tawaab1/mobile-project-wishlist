@@ -30,6 +30,7 @@ class WishlistRecyclerViewAdapter(var listener: IItemClick, private var wishlist
         val wishlist: Wishlist = wishlists[position]
         viewHolder.txvName.text = "Name: " + wishlist.name
         viewHolder.txvDateTime.text = "Date: " + DateTime.formatDateTime(wishlist.dateTime!!)
+        viewHolder.txvPurchased.text = "Date: " + wishlist.purchased
         viewHolder.imgBtnMenu.setOnClickListener(MenuOnButtonClickListener(wishlist, viewHolder.imgBtnMenu))
     }
 

@@ -19,8 +19,8 @@
 
     <EditText
         android:id="@+id/edtAddWishlist"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="370dp"
+        android:layout_height="225dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -30,9 +30,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvAddWishlist" />
+        app:layout_constraintTop_toBottomOf="@+id/txvAddWishlist"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -67,5 +68,31 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/statusView"
+        android:layout_width="75dp"
+        android:layout_height="23dp"
+        android:text="Status: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.484" />
+
+    <EditText
+        android:id="@+id/editStatusWishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

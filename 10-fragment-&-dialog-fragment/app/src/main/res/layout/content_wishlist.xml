@@ -10,35 +10,34 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddWishlist"
-        android:layout_width="88dp"
-        android:layout_height="69dp"
+        android:layout_width="97dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="5dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Add New Wishlist"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvWishlists"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="374dp"
+        android:layout_height="515dp"
         android:layout_below="@+id/btnAddWishlist"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddWishlist" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv2"
@@ -68,14 +67,37 @@
     <Button
         android:id="@+id/sortBtn"
         android:layout_width="90dp"
-        android:layout_height="70dp"
+        android:layout_height="37dp"
         android:text="Sort"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintVertical_bias="0.025" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="133dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <Button
+        android:id="@+id/categoryBtn"
+        android:layout_width="90dp"
+        android:layout_height="55dp"
+        android:text="Show only"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,5 @@ class WishlistViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var txvName: TextView = view.findViewById(R.id.txvWishlistName)
     var txvDateTime: TextView = view.findViewById(R.id.txvWishlistDateTime)
     var imgBtnMenu: ImageButton = view.findViewById(R.id.imgBtnWishlistMenu)
+    var txvPurchased: TextView = view.findViewById(R.id.txvWishlistPurchased)
 }
