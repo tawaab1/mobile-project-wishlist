@@ -21,6 +21,7 @@ import graysono.com.cp09progressdialogwebview.helpers.Wishlist
 import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IItemClick
 import kotlinx.android.synthetic.main.content_wishlist.*
+import kotlinx.android.synthetic.main.fragment_add_wishlist.*
 import kotlinx.coroutines.delay
 
 class WishlistActivity : BaseActivity(), IItemClick {
@@ -31,6 +32,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
     private lateinit var recyclerView: RecyclerView
     private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
     private lateinit var sortSpinner: Spinner
+    private lateinit var categorySpinner: Spinner
 
 
 
@@ -47,17 +49,17 @@ class WishlistActivity : BaseActivity(), IItemClick {
         val sortButton = findViewById<Button>(R.id.sortBtn)
         sortButton.setOnClickListener(SortButtonClickHandler())
 
+        val categoryButton = findViewById<Button>(R.id.categoryBtn)
+        categoryButton.setOnClickListener(CategoryButtonClickHandler())
+
         wishlists = ArrayList()
         dbHelper = DBHelper(this@WishlistActivity)
         wishlists = dbHelper.selectAll()
 
         btnAdd = findViewById(R.id.btnAddWishlist)
         btnAdd.setOnClickListener {
-            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "")
+            addNewWishlistDialog(DatabaseStatus.INSERT, 0, "", "")
         }
-
-
-
 
 
 
@@ -68,10 +70,26 @@ class WishlistActivity : BaseActivity(), IItemClick {
         recyclerView.adapter = wishlistRecyclerViewAdapter
 
         setupSpinner()
+        categorySpinner()
     }
 
-<<<<<<< HEAD
-=======
+    private fun categorySpinner() {
+        val cateSpinner = arrayOf<String?>(
+            "Show Only:",
+            "Purchased",
+            "Unpurchased",
+            "Others"
+
+        )
+
+        categorySpinner = findViewById(R.id.categorySpinner)
+        categorySpinner .adapter = ArrayAdapter<Any?>(
+            this@WishlistActivity,
+            R.layout.support_simple_spinner_dropdown_item,
+            cateSpinner
+        )
+    }
+
     private fun setupSpinner() {
         val sortedSpinner = arrayOf<String?>(
             "Sort by:",
@@ -115,15 +133,44 @@ class WishlistActivity : BaseActivity(), IItemClick {
 
             }
         }
+    inner class CategoryButtonClickHandler : View.OnClickListener {
+        override fun onClick(v: View) {
 
->>>>>>> master
+
+            val sortSelected =
+                this@WishlistActivity.categorySpinner.selectedItem.toString()
+
+            when (sortSelected) {
+                "Purchased" -> {
+                    wishlists = dbHelper.purchased()
+                    wishlistRecyclerViewAdapter.notifyData(wishlists)
+                }
+                "Unpurchased" -> {
+                    wishlists = dbHelper.unpurchased()
+                    wishlistRecyclerViewAdapter.notifyData(wishlists)
+                }
+                "Others" -> {
+                    wishlists = dbHelper.others()
+                    wishlistRecyclerViewAdapter.notifyData(wishlists)
+                }
+
+
+                else ->
+                {
+                    readDatabase()
+                }
+            }
+
+        }
+    }
+
     private fun readDatabase() {
         wishlists = dbHelper.selectAll()
         wishlistRecyclerViewAdapter.notifyData(wishlists)
     }
 
 
-    private fun addNewWishlistDialog(status: DatabaseStatus, id: Int, txt: String) {
+    private fun addNewWishlistDialog(status: DatabaseStatus, id: Int, txt: String, statusTxt: String) {
         val dialog = Dialog(this@WishlistActivity, R.style.DialogFullScreen)
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
@@ -134,14 +181,18 @@ class WishlistActivity : BaseActivity(), IItemClick {
         val btnCloseWishlist: Button = dialog.findViewById(R.id.btnCloseWishlist)
         val btnAddWishlist: Button = dialog.findViewById(R.id.btnAddWishlist)
         val txvAddWishlist: TextView = dialog.findViewById(R.id.txvAddWishlist)
+        val addpurchasedWishlist: EditText = dialog.findViewById(R.id.editStatusWishlist)
 
         if (status == DatabaseStatus.UPDATE) {
+
+            addpurchasedWishlist.setText(statusTxt)
             edtAddWishlist.setText(txt)
             btnAddWishlist.text = "Update"
             txvAddWishlist.text = "Update Wishlist"
 
 
         } else {
+            addpurchasedWishlist.setText("")
             edtAddWishlist.setText("")
             btnAddWishlist.text = "Add"
             txvAddWishlist.text = "Add New Wishlist"
@@ -157,11 +208,16 @@ class WishlistActivity : BaseActivity(), IItemClick {
                 Toast.makeText(this@WishlistActivity, "Name cannot be empty", Toast.LENGTH_SHORT)
                     .show()
             }
+            addpurchasedWishlist.text.isBlank() ->
+            {
+                Toast.makeText(this@WishlistActivity, "Please type Purchased or Unpurchased as a status", Toast.LENGTH_SHORT)
+                    .show()
+            }
             else -> {
-
                 if (status == DatabaseStatus.UPDATE) {
 
-                    dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim())
+
+                    dbHelper.update(id.toLong(), edtAddWishlist.text.toString().trim(), addpurchasedWishlist.text.toString().trim())
                     val builder1 = AlertDialog.Builder(this)
                     val dialogView1 = layoutInflater.inflate(R.layout.custom_wishlist_bar, null)
                     builder1.setView(dialogView1)
@@ -173,15 +229,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
 
                 } else if (status == DatabaseStatus.INSERT) {
 
-
-                    dbHelper.insert(edtAddWishlist.text.toString().trim())
-//                val progressDialog = ProgressDialog(this)
-//                progressDialog.setMessage("Adding..")
-//                progressDialog.setCancelable(false)
-//                progressDialog.show()
-//                Handler().postDelayed({progressDialog.dismiss()}, 1000)
-
-
+                    dbHelper.insert(edtAddWishlist.text.toString().trim(), addpurchasedWishlist.text.toString().trim())
                     val builder = AlertDialog.Builder(this)
                     val dialogView = layoutInflater.inflate(R.layout.custom_wishlist_bar, null)
                     builder.setView(dialogView)
@@ -192,11 +240,12 @@ class WishlistActivity : BaseActivity(), IItemClick {
                     readDatabase()
 
                 }
-                //dialog.show()
 
-                dialog.dismiss()
+
+
             }
         }
+        dialog.dismiss()
     }
 
 
@@ -210,7 +259,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
         popup.menuInflater.inflate(R.menu.menu_wishlist, popup.menu)
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.update -> addNewWishlistDialog(DatabaseStatus.UPDATE, wishlist.id, wishlist.name!!)
+                R.id.update -> addNewWishlistDialog(DatabaseStatus.UPDATE, wishlist.id, wishlist.name!!, wishlist.purchased!!)
                 R.id.delete -> {
                     val deleteWishlistAlertDialog = CustomAlertDialog(this@WishlistActivity, R.layout.custom_delete_wishlist_item)
                     deleteWishlistAlertDialog.show(
