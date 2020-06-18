@@ -14,10 +14,19 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+<<<<<<< HEAD
+=======
+import android.webkit.WebView
+import android.widget.ImageButton
+>>>>>>> master
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.*
+<<<<<<< HEAD
+=======
+import androidx.appcompat.widget.PopupMenu
+>>>>>>> master
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
@@ -84,6 +93,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
 
+<<<<<<< HEAD
 
     fun itemAdded()
     {
@@ -146,6 +156,8 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 
 
+=======
+>>>>>>> master
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
@@ -198,6 +210,10 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     override fun onDataReceived(data: String) {
         val inflater = layoutInflater
         val layout: View = inflater.inflate(
