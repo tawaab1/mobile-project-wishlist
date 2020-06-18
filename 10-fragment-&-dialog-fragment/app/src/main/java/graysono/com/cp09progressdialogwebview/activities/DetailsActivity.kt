@@ -4,32 +4,25 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.webkit.WebView
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.*
-import androidx.appcompat.widget.SwitchCompat
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
-import graysono.com.cp09progressdialogwebview.enums.DatabaseStatus
 import graysono.com.cp09progressdialogwebview.fragments.RateUsDialogFragment
 import graysono.com.cp09progressdialogwebview.fragments.WebViewFragment
 import graysono.com.cp09progressdialogwebview.helpers.Album
-import graysono.com.cp09progressdialogwebview.helpers.DBHelper
-import graysono.com.cp09progressdialogwebview.helpers.Wishlist
-import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import kotlinx.android.synthetic.main.content_details.*
 
@@ -48,17 +41,6 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         setContentView(R.layout.activity_details)
         displayToolbar(true, isTitleEnabled = false)
 
-
-//        val switch = findViewById(R.id.switchSettingsFollowers) as Switch
-
-//        sharedPref = PreferenceManager.getDefaultSharedPreferences(this@DetailsActivity)
-//``````````````````````````````````````````````````````````````````````````````````
-//        val notification: Boolean? = sharedPref.getBoolean("Notif on", false)
-//        switch.isChecked = notification == true
-
-//        val notificationsSwitch: SwitchCompat = findViewById(R.id.switchSettingsFollowers)
-//        notificationsSwitch.setOnCheckedChangeListener(SwitchOnCheckChangeListener())
-
         album = intent.extras.getParcelable("album")
 
         txvAlbumName.text = getString(R.string.album_name, album.name)
@@ -71,33 +53,31 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        //val switch = findViewById(R.id.switchSettingsFollowers) as Switch
 
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         var counter = 1
         val imageView = findViewById(R.id.fav) as ImageView
+        val isNotification: Boolean? = sharedPref.getBoolean("notification_on", false)
         imageView.setOnClickListener {
             val intent = Intent(this,DetailsActivity::class.java)
-//            val pendingIntent = PendingIntent.getActivity(this, 0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
-//            val contentView = RemoteViews(packageName,R.layout.notification_layout)
-//            contentView.setTextViewText(R.id.tv_title,"Wishlist Notification")
-//            contentView.setTextViewText(R.id.tv_content,"An item has been added to your cart.")
-
-            val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
-            contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
-            contentView2.setTextViewText(R.id.tv_content,"An item has been removed from your cart.")
-
-
+            Log.d("Notifications", isNotification.toString())
 
 
             if (counter == 1) {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
                 counter = 0
-                NotifOn()
+                if (isNotification!!)
+                {
+                    NotifOn()
+                }
             } else {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 counter = 1
-                NotifOff()
+                if (isNotification!! && counter == 0)
+                {
+                    NotifOff()
+                }
             }
         }
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
@@ -133,11 +113,12 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         notificationManager.notify(1234,builder.build())
     }
 
+
     fun NotifOff()
     {
         val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
         contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
-        contentView2.setTextViewText(R.id.tv_content,"An item has been added to your cart.")
+        contentView2.setTextViewText(R.id.tv_content,"An item has been removed from your cart.")
         val pendingIntent = PendingIntent.getActivity(this, 0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -162,30 +143,6 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         notificationManager.notify(1234,builder.build())
     }
 
-    fun Notif() {
-        NotifOff()
-        NotifOn()
-    }
-
-
-
-
-
-    inner class SwitchOnCheckChangeListener : CompoundButton.OnCheckedChangeListener {
-        override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-            when (buttonView.id) {
-                R.id.switchSettingsFollowers -> Log.d("Notifications", "Notifications")
-
-
-                }
-            }
-        }
-
-
-
-
-
-
 
 
     private fun showDialog() {
@@ -204,13 +161,9 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
     }
 
-
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-
     }
 
 

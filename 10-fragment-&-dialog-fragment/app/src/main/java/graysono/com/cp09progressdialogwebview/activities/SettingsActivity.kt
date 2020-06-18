@@ -24,15 +24,12 @@ class SettingsActivity : BaseActivity() {
         setContentView(R.layout.activity_settings)
         displayToolbar(true, isTitleEnabled = true)
 
-        val switch = findViewById(R.id.switchSettingsFollowers) as Switch
-        switch.setOnCheckedChangeListener(SwitchOnCheckChangeListener())
+
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this@SettingsActivity)
-
-
-
-
-        val notification: Boolean? = sharedPref.getBoolean("Notif on", false)
+        val switch = findViewById(R.id.switchSettingsFollowers) as Switch
+        switch.setOnCheckedChangeListener(SwitchOnCheckChangeListener())
+        val notification: Boolean? = sharedPref.getBoolean("notification_on", false)
         switch.isChecked = notification == true
     }
 
@@ -42,11 +39,8 @@ class SettingsActivity : BaseActivity() {
             when (buttonView.id) {
                 R.id.switchSettingsFollowers -> {
                     val isNotifChecked: Boolean = isChecked
-                    sharedPref.edit().putBoolean("Notif_on", isNotifChecked).apply()
-                    details.NotifOn()
+                    sharedPref.edit().putBoolean("notification_on", isNotifChecked).apply()
                 }
-
-
             }
         }
     }
