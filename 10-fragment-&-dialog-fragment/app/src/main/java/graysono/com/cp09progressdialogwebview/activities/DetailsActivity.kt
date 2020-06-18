@@ -38,19 +38,31 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             .into(imvAlbumImage)
 
 
+
+
+
+
+        var counter = 1
+
         val imageView = findViewById(R.id.fav) as ImageView
-//        imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
         imageView.setOnClickListener {
-            imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+            if (counter == 1) {
+                imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+                counter = 0
+            } else {
+                imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                counter = 1
+            }
         }
 
 
-
-        val imageButton = ImageButton(this)
-
-
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
+
+
     }
+
+
+
 
 
 
@@ -59,6 +71,8 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
     }
+
+
 
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
