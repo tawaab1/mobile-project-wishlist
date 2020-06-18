@@ -2,6 +2,10 @@
   <library name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0-beta01@aar">
     <CLASSES>
 <<<<<<< HEAD
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/46f0e6b3cd608bbb930d670a3d9946c8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/46f0e6b3cd608bbb930d670a3d9946c8/res" />
+=======
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19e9a0ab6cc7fec71a7b3f24728a429f/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19e9a0ab6cc7fec71a7b3f24728a429f/res" />
 =======
@@ -18,6 +22,7 @@
 >>>>>>> master
 >>>>>>> 60c6214e83e074d43e2c490654e3fc3744beca44
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     </CLASSES>
     <JAVADOC />
     <SOURCES>

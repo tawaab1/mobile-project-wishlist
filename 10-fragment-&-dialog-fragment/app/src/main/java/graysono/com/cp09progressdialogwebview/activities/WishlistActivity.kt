@@ -70,8 +70,7 @@ class WishlistActivity : BaseActivity(), IItemClick {
         setupSpinner()
     }
 
-<<<<<<< HEAD
-=======
+
     private fun setupSpinner() {
         val sortedSpinner = arrayOf<String?>(
             "Sort by:",
@@ -116,7 +115,6 @@ class WishlistActivity : BaseActivity(), IItemClick {
             }
         }
 
->>>>>>> master
     private fun readDatabase() {
         wishlists = dbHelper.selectAll()
         wishlistRecyclerViewAdapter.notifyData(wishlists)

@@ -2,6 +2,13 @@
   <library name="Gradle: com.google.android.material:material:1.0.0@aar">
     <ANNOTATIONS>
 <<<<<<< HEAD
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c7a45d887b08c6d6a5144a3c4adaa5b4/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c7a45d887b08c6d6a5144a3c4adaa5b4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c7a45d887b08c6d6a5144a3c4adaa5b4/res" />
+=======
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/df057c8b0991a9cc670bebcc3ad4f219/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
@@ -30,6 +37,7 @@
 >>>>>>> master
 >>>>>>> 60c6214e83e074d43e2c490654e3fc3744beca44
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     </CLASSES>
     <JAVADOC />
     <SOURCES />

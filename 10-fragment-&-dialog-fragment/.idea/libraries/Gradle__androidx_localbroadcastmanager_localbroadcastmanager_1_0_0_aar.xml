@@ -2,6 +2,10 @@
   <library name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar">
     <CLASSES>
 <<<<<<< HEAD
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c6aa36de0068dd1748e90adae778b253/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c6aa36de0068dd1748e90adae778b253/res" />
+=======
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a2179c80e19a2ef46896d21c74b6079f/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a2179c80e19a2ef46896d21c74b6079f/res" />
 =======
@@ -18,6 +22,7 @@
 >>>>>>> master
 >>>>>>> 60c6214e83e074d43e2c490654e3fc3744beca44
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     </CLASSES>
     <JAVADOC />
     <SOURCES>

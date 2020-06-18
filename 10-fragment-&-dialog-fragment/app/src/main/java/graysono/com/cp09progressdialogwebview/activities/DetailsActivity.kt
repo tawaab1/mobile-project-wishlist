@@ -6,16 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-<<<<<<< HEAD
 import android.webkit.WebView
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-=======
-import android.widget.*
-import androidx.appcompat.widget.PopupMenu
->>>>>>> master
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
@@ -86,11 +81,15 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 <<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
 
 
 =======
 <<<<<<< HEAD
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
@@ -100,9 +99,12 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> master
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     inner class WebViewButtonOnClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             val wbvFrag = WebViewFragment(album.url)
@@ -122,7 +124,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
     }
 
-<<<<<<< HEAD
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_main -> {
@@ -152,9 +154,9 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             else -> super.onOptionsItemSelected(item)
         }
     }
-=======
 
->>>>>>> master
+
+
 
     override fun onDataReceived(data: String) {
         val inflater = layoutInflater

@@ -2,6 +2,13 @@
   <library name="Gradle: androidx.recyclerview:recyclerview:1.0.0@aar">
     <ANNOTATIONS>
 <<<<<<< HEAD
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/730557d4c8312b662b9633f7aa57db46/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/730557d4c8312b662b9633f7aa57db46/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/730557d4c8312b662b9633f7aa57db46/res" />
+=======
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1e5315804aacf1389c7aace96c7e2e25/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
@@ -30,6 +37,7 @@
 >>>>>>> master
 >>>>>>> 60c6214e83e074d43e2c490654e3fc3744beca44
 >>>>>>> d51bcaf34b8eaf74db2ee03129faa7f732f85beb
+>>>>>>> master
     </CLASSES>
     <JAVADOC />
     <SOURCES>
