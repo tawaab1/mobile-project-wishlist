@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -69,14 +70,14 @@ class DetailsActivity : BaseActivity(), IDataReceived {
                 counter = 0
                 if (isNotification!!)
                 {
-                    NotifOn()
+                    itemAdded()
                 }
             } else {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 counter = 1
                 if (isNotification!! && counter == 0)
                 {
-                    NotifOff()
+                    itemRemoved()
                 }
             }
         }
@@ -84,7 +85,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
     }
 
 
-    fun NotifOn()
+    fun itemAdded()
     {
         val contentView = RemoteViews(packageName,R.layout.notification_layout)
         contentView.setTextViewText(R.id.tv_title,"Wishlist Notification")
@@ -114,7 +115,7 @@ class DetailsActivity : BaseActivity(), IDataReceived {
     }
 
 
-    fun NotifOff()
+    fun itemRemoved()
     {
         val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
         contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
