@@ -17,6 +17,7 @@ import graysono.com.cp09progressdialogwebview.activities.DetailsActivity
 class SettingsActivity : BaseActivity() {
 
     private lateinit var sharedPref: SharedPreferences
+    private lateinit var details: DetailsActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,11 @@ class SettingsActivity : BaseActivity() {
     inner class SwitchOnCheckChangeListener : CompoundButton.OnCheckedChangeListener {
         override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
             when (buttonView.id) {
-                R.id.switchSettingsFollowers -> Log.d("Notifications", "Notifications")
+                R.id.switchSettingsFollowers -> {
+                    val isNotifChecked: Boolean = isChecked
+                    sharedPref.edit().putBoolean("Notif_on", isNotifChecked).apply()
+                    details.NotifOn()
+                }
 
 
             }

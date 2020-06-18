@@ -93,61 +93,18 @@ class DetailsActivity : BaseActivity(), IDataReceived {
             if (counter == 1) {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
                 counter = 0
-
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
-//                    notificationChannel.enableLights(true)
-//                    notificationChannel.lightColor = Color.BLUE
-//                    notificationChannel.enableVibration(false)
-//                    notificationManager.createNotificationChannel(notificationChannel)
-//
-//                    builder = Notification.Builder(this,channelId)
-//                        .setContent(contentView)
-//                        .setSmallIcon(R.drawable.ic_launcher_round)
-//                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-//                        .setContentIntent(pendingIntent)
-//                }else{
-//                    builder = Notification.Builder(this)
-//                        .setContent(contentView)
-//                        .setSmallIcon(R.drawable.ic_launcher_round)
-//                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-//                        .setContentIntent(pendingIntent)
-//                }
-
                 NotifOn()
-
-                notificationManager.notify(1234,builder.build())
             } else {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 counter = 1
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
-//                    notificationChannel.enableLights(true)
-//                    notificationChannel.lightColor = Color.BLUE
-//                    notificationChannel.enableVibration(false)
-//                    notificationManager.createNotificationChannel(notificationChannel)
-//
-//                    builder = Notification.Builder(this,channelId)
-//                        .setContent(contentView2)
-//                        .setSmallIcon(R.drawable.ic_launcher_round)
-//                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-//                        .setContentIntent(pendingIntent)
-//                }else{
-//                    builder = Notification.Builder(this)
-//                        .setContent(contentView2)
-//                        .setSmallIcon(R.drawable.ic_launcher_round)
-//                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-//                        .setContentIntent(pendingIntent)
-//                }
                 NotifOff()
-                notificationManager.notify(1234,builder.build())
             }
         }
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
 
 
-    public fun NotifOn()
+    fun NotifOn()
     {
         val contentView = RemoteViews(packageName,R.layout.notification_layout)
         contentView.setTextViewText(R.id.tv_title,"Wishlist Notification")
@@ -173,9 +130,10 @@ class DetailsActivity : BaseActivity(), IDataReceived {
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
                 .setContentIntent(pendingIntent)
         }
+        notificationManager.notify(1234,builder.build())
     }
 
-    public fun NotifOff()
+    fun NotifOff()
     {
         val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
         contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
@@ -201,7 +159,15 @@ class DetailsActivity : BaseActivity(), IDataReceived {
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
                 .setContentIntent(pendingIntent)
         }
+        notificationManager.notify(1234,builder.build())
     }
+
+    fun Notif() {
+        NotifOff()
+        NotifOn()
+    }
+
+
 
 
 
