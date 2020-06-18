@@ -3,50 +3,53 @@ package graysono.com.cp09progressdialogwebview.activities
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+<<<<<<< HEAD
+=======
 import android.webkit.WebView
 import android.widget.ImageButton
+>>>>>>> master
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.*
+<<<<<<< HEAD
+=======
 import androidx.appcompat.widget.PopupMenu
+>>>>>>> master
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
-import graysono.com.cp09progressdialogwebview.enums.DatabaseStatus
 import graysono.com.cp09progressdialogwebview.fragments.RateUsDialogFragment
 import graysono.com.cp09progressdialogwebview.fragments.WebViewFragment
 import graysono.com.cp09progressdialogwebview.helpers.Album
-import graysono.com.cp09progressdialogwebview.helpers.DBHelper
-import graysono.com.cp09progressdialogwebview.helpers.Wishlist
-import graysono.com.cp09progressdialogwebview.helpers.WishlistRecyclerViewAdapter
 import graysono.com.cp09progressdialogwebview.interfaces.IDataReceived
 import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : BaseActivity(), IDataReceived {
     private lateinit var album: Album
-    //    private lateinit var wishlists: ArrayList<Wishlist>
-//    private lateinit var dbHelper: DBHelper
-//    private lateinit var wishlistRecyclerViewAdapter: WishlistRecyclerViewAdapter
     lateinit var notificationManager : NotificationManager
     private lateinit var notificationChannel: NotificationChannel
     private lateinit var builder: Notification.Builder
     private val channelId = "package graysono.com.cp09progressdialogwebview.activities"
     private val description = "test notification"
+    private lateinit var sharedPref: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         displayToolbar(true, isTitleEnabled = false)
-
 
         album = intent.extras.getParcelable("album")
 
@@ -60,80 +63,101 @@ class DetailsActivity : BaseActivity(), IDataReceived {
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         var counter = 1
         val imageView = findViewById(R.id.fav) as ImageView
+        val isNotification: Boolean? = sharedPref.getBoolean("notification_on", false)
         imageView.setOnClickListener {
-
             val intent = Intent(this,DetailsActivity::class.java)
-            val pendingIntent = PendingIntent.getActivity(this, 0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
-            val contentView = RemoteViews(packageName,R.layout.notification_layout)
-            contentView.setTextViewText(R.id.tv_title,"Wishlist Notification")
-            contentView.setTextViewText(R.id.tv_content,"An item has been added to your cart.")
-
-            val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
-            contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
-            contentView2.setTextViewText(R.id.tv_content,"An item has been removed from your cart.")
-
-
-
+            Log.d("Notifications", isNotification.toString())
 
 
             if (counter == 1) {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_24)
                 counter = 0
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
-                    notificationChannel.enableLights(true)
-                    notificationChannel.lightColor = Color.BLUE
-                    notificationChannel.enableVibration(false)
-                    notificationManager.createNotificationChannel(notificationChannel)
-
-                    builder = Notification.Builder(this,channelId)
-                        .setContent(contentView)
-                        .setSmallIcon(R.drawable.ic_launcher_round)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-                        .setContentIntent(pendingIntent)
-                }else{
-                    builder = Notification.Builder(this)
-                        .setContent(contentView)
-                        .setSmallIcon(R.drawable.ic_launcher_round)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-                        .setContentIntent(pendingIntent)
+                if (isNotification!!)
+                {
+                    itemAdded()
                 }
-
-                notificationManager.notify(1234,builder.build())
             } else {
                 imageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 counter = 1
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
-                    notificationChannel.enableLights(true)
-                    notificationChannel.lightColor = Color.BLUE
-                    notificationChannel.enableVibration(false)
-                    notificationManager.createNotificationChannel(notificationChannel)
-
-                    builder = Notification.Builder(this,channelId)
-                        .setContent(contentView2)
-                        .setSmallIcon(R.drawable.ic_launcher_round)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-                        .setContentIntent(pendingIntent)
-                }else{
-                    builder = Notification.Builder(this)
-                        .setContent(contentView2)
-                        .setSmallIcon(R.drawable.ic_launcher_round)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
-                        .setContentIntent(pendingIntent)
+                if (isNotification!! && counter == 0)
+                {
+                    itemRemoved()
                 }
-
-                notificationManager.notify(1234,builder.build())
             }
         }
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
 
+<<<<<<< HEAD
+
+    fun itemAdded()
+    {
+        val contentView = RemoteViews(packageName,R.layout.notification_layout)
+        contentView.setTextViewText(R.id.tv_title,"Wishlist Notification")
+        contentView.setTextViewText(R.id.tv_content,"An item has been added to your cart.")
+        val pendingIntent = PendingIntent.getActivity(this, 0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.BLUE
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this,channelId)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
+                .setContentIntent(pendingIntent)
+        }else{
+            builder = Notification.Builder(this)
+                .setContent(contentView)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
+                .setContentIntent(pendingIntent)
+        }
+        notificationManager.notify(1234,builder.build())
+    }
+
+
+    fun itemRemoved()
+    {
+        val contentView2 = RemoteViews(packageName,R.layout.notification_layout)
+        contentView2.setTextViewText(R.id.tv_title,"Wishlist Notification")
+        contentView2.setTextViewText(R.id.tv_content,"An item has been removed from your cart.")
+        val pendingIntent = PendingIntent.getActivity(this, 0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.BLUE
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this,channelId)
+                .setContent(contentView2)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
+                .setContentIntent(pendingIntent)
+        }else{
+            builder = Notification.Builder(this)
+                .setContent(contentView2)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher))
+                .setContentIntent(pendingIntent)
+        }
+        notificationManager.notify(1234,builder.build())
+    }
+
+
+
+=======
+>>>>>>> master
     private fun showDialog() {
         val dialogFragment = RateUsDialogFragment(this)
         dialogFragment.show(supportFragmentManager, null)
@@ -150,13 +174,9 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
     }
 
-
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-
     }
 
 
@@ -190,7 +210,10 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
     }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     override fun onDataReceived(data: String) {
         val inflater = layoutInflater
         val layout: View = inflater.inflate(
