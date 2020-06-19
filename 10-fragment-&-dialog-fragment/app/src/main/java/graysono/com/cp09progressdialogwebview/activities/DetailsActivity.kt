@@ -14,26 +14,10 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-<<<<<<< HEAD
-
-import android.webkit.WebView
-import android.widget.ImageButton
-
-=======
-import android.webkit.WebView
-import android.widget.ImageButton
->>>>>>> 398be0f2dca556909a4737b780e2457cd2e3b836
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.*
-<<<<<<< HEAD
-
-import androidx.appcompat.widget.PopupMenu
-
-=======
-import androidx.appcompat.widget.PopupMenu
->>>>>>> 398be0f2dca556909a4737b780e2457cd2e3b836
 import com.squareup.picasso.Picasso
 import graysono.com.cp09progressdialogwebview.R
 import graysono.com.cp09progressdialogwebview.custom.CustomAlertDialog
@@ -99,11 +83,6 @@ class DetailsActivity : BaseActivity(), IDataReceived {
         }
         btnAlbumUrl.setOnClickListener(WebViewButtonOnClickListener())
     }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 398be0f2dca556909a4737b780e2457cd2e3b836
 
     fun itemAdded()
     {
